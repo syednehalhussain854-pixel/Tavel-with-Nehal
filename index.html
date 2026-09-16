@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Travel With Nehal</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7f9;
+    color:#17202a;
+}
+
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#07111f;
+    color:white;
+    padding:16px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#facc15;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:65vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,80px);
+}
+
+.hero h1 span{
+    color:#facc15;
+}
+
+.hero p{
+    margin:15px 0 25px;
+    font-size:19px;
+}
+
+/* BUTTON */
+
+.btn{
+    border:none;
+    background:#facc15;
+    color:#111;
+    padding:13px 25px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+/* UPLOAD SECTION */
+
+.upload-section{
+    padding:70px 6%;
+}
+
+.container{
+    max-width:850px;
+    margin:auto;
+}
+
+.heading{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.heading h2{
+    font-size:38px;
+}
+
+.heading p{
+    color:#667085;
+    margin-top:8px;
+}
+
+.form{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin:15px 0 7px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:13px;
+    border:1px solid #d0d5dd;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+}
+
+textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#0ea5e9;
+}
+
+.file{
+    padding:10px;
+    background:#f8fafc;
+}
+
+.preview{
+    width:100%;
+    max-height:350px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-top:15px;
+    display:none;
+}
+
+.publish{
+    margin-top:20px;
+    width:100%;
+    font-size:16px;
+}
+
+/* POSTS */
+
+.posts-section{
+    padding:70px 6%;
+    background:#eef3f6;
+}
+
+.posts{
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+}
+
+.post{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.post img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.post-content{
+    padding:20px;
+}
+
+.location{
+    color:#0ea5e9;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.post h3{
+    margin:8px 0;
+    font-size:23px;
+}
+
+.post p{
+    color:#667085;
+    line-height:1.6;
+}
+
+.budget{
+    margin:12px 0;
+    font-weight:bold;
+}
+
+.delete{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:9px 15px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+    color:#667085;
+    padding:30px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#020617;
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    nav{
+        padding:15px 5%;
+    }
+
+    nav a{
+        display:none;
+    }
+
+    .hero{
+        min-height:55vh;
+    }
+
+    .form{
+        padding:20px;
+    }
+
+    .heading h2{
+        font-size:30px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        Travel <span>With Nehal</span>
+    </div>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#upload">Create Post</a>
+        <a href="#stories">Stories</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div>
+
+        <h1>
+            Travel <span>With Nehal</span>
+        </h1>
+
+        <p>
+            My Journey • My Stories • My World 🌍
+        </p>
+
+        <button
+            class="btn"
+            onclick="document.getElementById('upload').scrollIntoView()"
+        >
+            Create Travel Post
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- UPLOAD -->
+
+<section class="upload-section" id="upload">
+
+    <div class="container">
+
+        <div class="heading">
+
+            <h2>Create Your Travel Story 📸</h2>
+
+            <p>
+                Upload your travel photo and share your experience.
+            </p>
+
+        </div>
+
+
+        <div class="form">
+
+            <label>Travel Photo</label>
+
+            <input
+                type="file"
+                id="photo"
+                class="file"
+                accept="image/*"
+                onchange="previewImage(event)"
+            >
+
+            <img
+                id="preview"
+                class="preview"
+            >
+
+
+            <label>Destination</label>
+
+            <input
+                type="text"
+                id="destination"
+                placeholder="Example: Manali"
+            >
+
+
+            <label>Travel Story Title</label>
+
+            <input
+                type="text"
+                id="title"
+                placeholder="Example: My First Manali Trip"
+            >
+
+
+            <label>Trip Budget ₹</label>
+
+            <input
+                type="number"
+                id="budget"
+                placeholder="Example: 5000"
+            >
+
+
+            <label>Your Story</label>
+
+            <textarea
+                id="story"
+                placeholder="Apni travel story yahan likho..."
+            ></textarea>
+
+
+            <button
+                class="btn publish"
+                onclick="publishPost()"
+            >
+                🚀 Publish Story
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- POSTS -->
+
+<section class="posts-section" id="stories">
+
+    <div class="heading">
+
+        <h2>My Travel Stories 🌍</h2>
+
+        <p>
+            Your published travel experiences
+        </p>
+
+    </div>
+
+
+    <div
+        class="posts"
+        id="posts"
+    ></div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>Travel With Nehal 🌍</h3>
+
+    <br>
+
+    <p>
+        Explore • Experience • Repeat
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 Travel With Nehal
+    </p>
+
+</footer>
+
+
+<script>
+
+/* IMAGE PREVIEW */
+
+let selectedImage = "";
+
+function previewImage(event){
+
+    const file = event.target.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        selectedImage = e.target.result;
+
+        const preview =
+        document.getElementById("preview");
+
+        preview.src = selectedImage;
+
+        preview.style.display = "block";
+
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+/* PUBLISH POST */
+
+function publishPost(){
+
+    const destination =
+    document.getElementById("destination").value.trim();
+
+    const title =
+    document.getElementById("title").value.trim();
+
+    const budget =
+    document.getElementById("budget").value.trim();
+
+    const story =
+    document.getElementById("story").value.trim();
+
+
+    if(!selectedImage){
+
+        alert("Please upload a photo 📸");
+
+        return;
+    }
+
+    if(!destination || !title || !story){
+
+        alert("Please fill Destination, Title and Story.");
+
+        return;
+    }
+
+
+    const post = {
+
+        image:selectedImage,
+
+        destination:destination,
+
+        title:title,
+
+        budget:budget,
+
+        story:story,
+
+        date:new Date().toLocaleDateString()
+
+    };
+
+
+    let posts =
+    JSON.parse(localStorage.getItem("travelPosts")) || [];
+
+
+    posts.unshift(post);
+
+
+    localStorage.setItem(
+        "travelPosts",
+        JSON.stringify(posts)
+    );
+
+
+    alert("🎉 Your travel story has been published!");
+
+
+    clearForm();
+
+    displayPosts();
+
+    document
+    .getElementById("stories")
+    .scrollIntoView();
+
+}
+
+
+/* DISPLAY POSTS */
+
+function displayPosts(){
+
+    const container =
+    document.getElementById("posts");
+
+    const posts =
+    JSON.parse(localStorage.getItem("travelPosts")) || [];
+
+
+    container.innerHTML = "";
+
+
+    if(posts.length === 0){
+
+        container.innerHTML =
+
+        `<div class="empty">
+            <h3>No travel stories yet 📭</h3>
+            <p>Create your first travel story above.</p>
+        </div>`;
+
+        return;
+    }
+
+
+    posts.forEach(function(post,index){
+
+        const card =
+        document.createElement("div");
+
+        card.className = "post";
+
+
+        card.innerHTML = `
+
+            <img src="${post.image}">
+
+            <div class="post-content">
+
+                <div class="location">
+                    📍 ${escapeHTML(post.destination)}
+                </div>
+
+                <h3>
+                    ${escapeHTML(post.title)}
+                </h3>
+
+                <p>
+                    ${escapeHTML(post.story)}
+                </p>
+
+                ${
+                    post.budget
+                    ?
+                    `<div class="budget">
+                        💰 Budget: ₹${escapeHTML(post.budget)}
+                    </div>`
+                    :
+                    ""
+                }
+
+                <small>
+                    📅 ${post.date}
+                </small>
+
+                <br><br>
+
+                <button
+                    class="delete"
+                    onclick="deletePost(${index})"
+                >
+                    Delete
+                </button>
+
+            </div>
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* DELETE */
+
+function deletePost(index){
+
+    if(!confirm("Delete this travel story?")){
+
+        return;
+    }
+
+
+    let posts =
+    JSON.parse(localStorage.getItem("travelPosts")) || [];
+
+
+    posts.splice(index,1);
+
+
+    localStorage.setItem(
+        "travelPosts",
+        JSON.stringify(posts)
+    );
+
+
+    displayPosts();
+
+}
+
+
+/* CLEAR FORM */
+
+function clearForm(){
+
+    document.getElementById("photo").value="";
+
+    document.getElementById("destination").value="";
+
+    document.getElementById("title").value="";
+
+    document.getElementById("budget").value="";
+
+    document.getElementById("story").value="";
+
+    document.getElementById("preview").style.display="none";
+
+    selectedImage="";
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(text){
+
+    return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* LOAD SAVED POSTS */
+
+displayPosts();
+
+</script>
+
+</body>
+</html>
